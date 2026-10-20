@@ -1,0 +1,72 @@
+:root {
+  /* page body: light */
+  --bg: #f5f2ea;
+  --text: #1b1f24;
+  /* top bar and footer: dark */
+  --bar: #0d1117;
+  --bar-border: #2a3342;
+  --bar-text: #e6edf3;
+  --bar-muted: #8b949e;
+  --accent: #d4a017;
+  --sans: 'Helvetica Neue', Arial, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+::selection { background: var(--accent); color: #000; }
+a { color: inherit; text-decoration: none; }
+
+header {
+  background: rgba(13,17,23,0.92);
+  border-bottom: 1px solid var(--bar-border);
+  color: var(--bar-text);
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(8px);
+}
+.nav {
+  max-width: 1000px; margin: 0 auto; padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.logo { font-size: calc(1.2rem + 4px); letter-spacing: 0.01em; white-space: nowrap; }
+.logo em { color: var(--accent); font-style: normal; }
+nav ul { display: flex; gap: 28px; list-style: none; font-family: var(--sans); font-size: calc(0.9rem + 4px); }
+nav a { color: var(--bar-muted); transition: color .2s; }
+nav a:hover, nav a:focus-visible, nav a[aria-current="page"] { color: var(--bar-text); }
+
+main { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 88px 24px 96px; }
+.copy { max-width: 680px; }
+/* one line: shrinks with the viewport (text is ~16.5em wide), wraps only on phones */
+h1 {
+  font-size: clamp(2rem, calc((100vw - 48px) / 16.5), 2.8rem); font-weight: normal;
+  line-height: 1.2; margin-bottom: 28px; white-space: nowrap;
+}
+/* all body copy shares one style */
+h2, p { font-size: 1.1rem; font-weight: normal; color: var(--text); }
+h2 { margin-top: 28px; }
+h2.area { font-weight: bold; }
+p { margin-bottom: 18px; }
+.spacer { height: 28px; }
+
+footer {
+  background: var(--bar); border-top: 1px solid var(--bar-border); padding: 28px 0;
+  color: var(--bar-muted); font-family: var(--sans); font-size: 0.8rem;
+}
+footer div { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+@media (max-width: 640px) {
+  .nav { padding: 16px 20px; }
+  .logo { font-size: calc(1.05rem + 4px); }
+  nav ul { gap: 18px; }
+  main { padding: 56px 20px 72px; }
+}
+@media (max-width: 600px) {
+  h1 { white-space: normal; text-wrap: balance; }
+  footer div { padding: 0 20px; }
+}
